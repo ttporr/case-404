@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASE 404 — Detective Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Шапка сайту -->
+    <header class="header">
+        <a href="#" class="logo">CASE <span>404</span></a>
+
+        <div class="header-info">
+            <span class="status">SYSTEM ONLINE</span>
+            <span class="points">Бали: <strong id="points">0</strong></span>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Головна сторінка -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <p class="subtitle">DETECTIVE INVESTIGATION SYSTEM</p>
+
+                <h1>CASE <span>404</span></h1>
+
+                <p class="hero-description">
+                    Кожна справа приховує правду.
+                    Знайди докази, проаналізуй підозрюваних
+                    та розкрий злочин.
+                </p>
+
+                <button id="startButton" class="btn btn-primary">
+                    Розпочати розслідування
+                </button>
+
+                <div class="hero-bottom">
+                    <span>3 АКТИВНІ СПРАВИ</span>
+                    <span>01 / 03</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Список справ -->
+        <section id="cases" class="page">
+            <div class="section-heading">
+                <p class="subtitle">INVESTIGATION DATABASE</p>
+                <h2>Доступні справи</h2>
+                <p>Обери справу, яку хочеш розслідувати.</p>
+            </div>
+
+            <div id="caseList" class="case-grid">
+
+                <!-- Картки справ додаються через JavaScript -->
+
+            </div>
+
+            <button id="homeButton" class="btn btn-secondary">
+                На головну
+            </button>
+        </section>
+
+
+        <!-- Сторінка розслідування -->
+        <section id="investigation" class="page">
+
+            <div class="investigation-header">
+                <div>
+                    <p class="subtitle">ACTIVE INVESTIGATION</p>
+                    <h2 id="caseTitle">Назва справи</h2>
+                </div>
+
+                <span class="case-number">CASE #404</span>
+            </div>
+
+            <div class="investigation-content">
+
+                <div class="panel story-panel">
+                    <h3>Опис справи</h3>
+                    <p id="caseStory">
+                        Тут буде опис справи.
+                    </p>
+                </div>
+
+                <div class="panel">
+                    <h3>Зібрані докази</h3>
+                    <div id="evidenceList" class="evidence-list">
+                        <!-- Докази додаються через JavaScript -->
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Підозрювані</h3>
+                    <p class="panel-description">
+                        Обери людину, яку вважаєш винною.
+                    </p>
+
+                    <div id="suspectList" class="suspect-grid">
+                        <!-- Підозрювані додаються через JavaScript -->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="investigation-actions">
+                <button id="submitButton" class="btn btn-primary">
+                    Винести вердикт
+                </button>
+
+                <button id="backToCasesButton" class="btn btn-secondary">
+                    До списку справ
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- Сторінка результату -->
+        <section id="result" class="page">
+
+            <div class="result-card">
+                <p class="subtitle">INVESTIGATION COMPLETED</p>
+
+                <div class="result-icon">!</div>
+
+                <h2 id="resultTitle">Розслідування завершено</h2>
+
+                <p id="resultText">
+                    Тут з'явиться результат твого розслідування.
+                </p>
+
+                <div class="result-actions">
+                    <button id="nextCaseButton" class="btn btn-primary">
+                        До інших справ
+                    </button>
+
+                    <button id="restartButton" class="btn btn-secondary">
+                        На головну
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Підвал -->
+    <footer class="footer">
+        <p>CASE 404 © 2026</p>
+        <p>THE TRUTH IS HIDDEN IN THE DETAILS</p>
+    </footer>
+
+
+    <!-- Підключення JavaScript -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
