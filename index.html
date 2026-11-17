@@ -1,113 +1,261 @@
 
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CASE 404 — Detective Game</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <!-- Шапка сайту -->
+    <!-- HEADER -->
     <header class="header">
-        <a href="#" class="logo">CASE <span>404</span></a>
+
+        <a href="#" class="logo">
+            CASE <span>404</span>
+        </a>
 
         <div class="header-info">
-            <span class="status">SYSTEM ONLINE</span>
-            <span class="points">Бали: <strong id="points">0</strong></span>
+
+            <span class="status">
+                ● SYSTEM ONLINE
+            </span>
+
+            <div class="points">
+                Бали:
+                <strong id="points">0</strong>
+            </div>
+
         </div>
+
     </header>
+
 
     <main class="container">
 
-        <!-- Головна сторінка -->
+        <!-- HOME PAGE -->
         <section id="home" class="page active">
+
             <div class="hero">
-                <p class="subtitle">DETECTIVE INVESTIGATION SYSTEM</p>
 
-                <h1>CASE <span>404</span></h1>
+                <div class="hero-content">
 
-                <p class="hero-description">
-                    Кожна справа приховує правду.
-                    Знайди докази, проаналізуй підозрюваних
-                    та розкрий злочин.
-                </p>
+                    <p class="subtitle">
+                        DETECTIVE INVESTIGATION SYSTEM
+                    </p>
 
-                <button id="startButton" class="btn btn-primary">
-                    Розпочати розслідування
-                </button>
+                    <img
+                        src="assets/images/case404_logo.png"
+                        alt="CASE 404"
+                        class="hero-logo"
+                    >
+
+                    <p class="hero-description">
+                        Кожна справа приховує правду.
+                        Знайди докази, проаналізуй підозрюваних
+                        та розкрий злочин.
+                    </p>
+
+                    <button id="startButton" class="btn btn-primary">
+                        Розпочати розслідування
+                    </button>
+
+                </div>
 
                 <div class="hero-bottom">
-                    <span>3 АКТИВНІ СПРАВИ</span>
-                    <span>01 / 03</span>
+                    <span>3 ACTIVE CASES</span>
+                    <span>CLASSIFIED DATABASE</span>
                 </div>
+
             </div>
+
+            <div class="home-decoration">
+
+                <div class="decoration-item">
+                    <img
+                        src="assets/images/fingerprint_closeup.png"
+                        alt=""
+                    >
+                    <span>FINGERPRINT ANALYSIS</span>
+                </div>
+
+                <div class="decoration-item">
+                    <img
+                        src="assets/images/evidence_folder.png"
+                        alt=""
+                    >
+                    <span>CLASSIFIED EVIDENCE</span>
+                </div>
+
+                <div class="decoration-item">
+                    <img
+                        src="assets/images/magnifying_glass.png"
+                        alt=""
+                    >
+                    <span>INVESTIGATION</span>
+                </div>
+
+            </div>
+
         </section>
 
 
-        <!-- Список справ -->
+        <!-- CASES PAGE -->
         <section id="cases" class="page">
+
             <div class="section-heading">
-                <p class="subtitle">INVESTIGATION DATABASE</p>
+
+                <p class="subtitle">
+                    INVESTIGATION DATABASE
+                </p>
+
                 <h2>Доступні справи</h2>
-                <p>Обери справу, яку хочеш розслідувати.</p>
+
+                <p>
+                    Обери справу, яку хочеш розслідувати.
+                </p>
+
+            </div>
+
+            <div class="database-banner">
+
+                <img
+                    src="assets/images/evidence_board.png"
+                    alt=""
+                >
+
+                <div class="database-banner-text">
+                    <span>CONFIDENTIAL DATABASE</span>
+                    <p>Усі матеріали розслідувань зібрані в одному місці.</p>
+                </div>
+
             </div>
 
             <div id="caseList" class="case-grid">
 
-                <!-- Картки справ додаються через JavaScript -->
+                <!-- Картки справ створюються через JavaScript -->
 
             </div>
 
             <button id="homeButton" class="btn btn-secondary">
                 На головну
             </button>
+
         </section>
 
 
-        <!-- Сторінка розслідування -->
+        <!-- INVESTIGATION PAGE -->
         <section id="investigation" class="page">
 
             <div class="investigation-header">
+
                 <div>
-                    <p class="subtitle">ACTIVE INVESTIGATION</p>
-                    <h2 id="caseTitle">Назва справи</h2>
+
+                    <p class="subtitle">
+                        ACTIVE INVESTIGATION
+                    </p>
+
+                    <h2 id="caseTitle">
+                        Назва справи
+                    </h2>
+
                 </div>
 
-                <span class="case-number">CASE #404</span>
+                <span class="case-number">
+                    CASE #404
+                </span>
+
             </div>
+
+
+            <div class="investigation-banner">
+
+                <img
+                    src="assets/images/detective_office.png"
+                    alt="Детективний кабінет"
+                >
+
+                <div class="investigation-banner-text">
+                    <span>CASE FILE / ACTIVE</span>
+                    <p>Уважно вивчи всі матеріали справи.</p>
+                </div>
+
+            </div>
+
 
             <div class="investigation-content">
 
+                <!-- STORY -->
                 <div class="panel story-panel">
-                    <h3>Опис справи</h3>
+
+                    <div class="panel-heading">
+
+                        <span class="panel-number">01</span>
+
+                        <h3>Опис справи</h3>
+
+                    </div>
+
                     <p id="caseStory">
                         Тут буде опис справи.
                     </p>
+
                 </div>
 
+
+                <!-- EVIDENCE -->
                 <div class="panel">
-                    <h3>Зібрані докази</h3>
-                    <div id="evidenceList" class="evidence-list">
-                        <!-- Докази додаються через JavaScript -->
+
+                    <div class="panel-heading">
+
+                        <span class="panel-number">02</span>
+
+                        <h3>Зібрані докази</h3>
+
                     </div>
+
+                    <div class="evidence-list" id="evidenceList">
+
+                        <!-- Докази додаються через JavaScript -->
+
+                    </div>
+
                 </div>
 
+
+                <!-- SUSPECTS -->
                 <div class="panel">
-                    <h3>Підозрювані</h3>
+
+                    <div class="panel-heading">
+
+                        <span class="panel-number">03</span>
+
+                        <h3>Підозрювані</h3>
+
+                    </div>
+
                     <p class="panel-description">
                         Обери людину, яку вважаєш винною.
                     </p>
 
                     <div id="suspectList" class="suspect-grid">
+
                         <!-- Підозрювані додаються через JavaScript -->
+
                     </div>
+
                 </div>
 
             </div>
 
+
             <div class="investigation-actions">
+
                 <button id="submitButton" class="btn btn-primary">
                     Винести вердикт
                 </button>
@@ -115,26 +263,40 @@
                 <button id="backToCasesButton" class="btn btn-secondary">
                     До списку справ
                 </button>
+
             </div>
 
         </section>
 
 
-        <!-- Сторінка результату -->
+        <!-- RESULT PAGE -->
         <section id="result" class="page">
 
             <div class="result-card">
-                <p class="subtitle">INVESTIGATION COMPLETED</p>
 
-                <div class="result-icon">!</div>
+                <p class="subtitle">
+                    INVESTIGATION COMPLETED
+                </p>
 
-                <h2 id="resultTitle">Розслідування завершено</h2>
+                <div class="result-image">
+
+                    <img
+                        src="assets/images/police_badge.png"
+                        alt=""
+                    >
+
+                </div>
+
+                <h2 id="resultTitle">
+                    Розслідування завершено
+                </h2>
 
                 <p id="resultText">
                     Тут з'явиться результат твого розслідування.
                 </p>
 
                 <div class="result-actions">
+
                     <button id="nextCaseButton" class="btn btn-primary">
                         До інших справ
                     </button>
@@ -142,7 +304,9 @@
                     <button id="restartButton" class="btn btn-secondary">
                         На головну
                     </button>
+
                 </div>
+
             </div>
 
         </section>
@@ -150,15 +314,23 @@
     </main>
 
 
-    <!-- Підвал -->
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>CASE 404 © 2026</p>
+
+        <div class="footer-logo">
+            CASE <span>404</span>
+        </div>
+
         <p>THE TRUTH IS HIDDEN IN THE DETAILS</p>
+
+        <p>© 2026 CASE 404</p>
+
     </footer>
 
 
-    <!-- Підключення JavaScript -->
+    <!-- JAVASCRIPT -->
     <script type="module" src="js/main.js"></script>
 
 </body>
+
 </html>
