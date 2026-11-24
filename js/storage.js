@@ -1,45 +1,46 @@
+const STORAGE_KEY = "case404_scores";
 
 export const Storage = {
-
-  saveScore(caseId, correct) {
-    const scores = this.getScores();
-
-    scores[caseId] = correct;
-
-    localStorage.setItem(
-      "case404_scores",
-      JSON.stringify(scores)
-    );
-  },
-
   getScores() {
-    return JSON.parse(
-      localStorage.getItem("case404_scores") || "{}"
-    );
+    try {
+      return JSON.parse(
+        localStorage.getItem(STORAGE_KEY) || "{}"
+      );
+    } catch (error) {
+      console.error(
+        "Не вдалося прочитати збережені результати:",
+        error
+      );
+
+      return {};
+    }
   },
 
   getScore(caseId) {
+    return this.getScores()[caseId];
+  },
+
+  saveScore(caseId, isCorrect) {
     const scores = this.getScores();
+
+    scores[caseId] =
+      scores[caseId] === true || isCorrect === true;
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(scores)
+    );
 
     return scores[caseId];
   },
 
-  clearScores() {
-    localStorage.removeItem("case404_scores");
-  },
-
   getTotalScore() {
-    const scores = this.getScores();
-
-    return Object.values(scores).filter(
-      score => score === true
-    ).length;
+    return (
+      Object.values(this.getScores()).filter(Boolean).length * 100
+    );
   },
 
-  getCompletedCases() {
-    const scores = this.getScores();
-
-    return Object.keys(scores).length;
+  clearScores() {
+    localStorage.removeItem(STORAGE_KEY);
   }
-
 };

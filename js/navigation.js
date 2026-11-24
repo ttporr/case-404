@@ -1,55 +1,27 @@
+export function showPage(pageId) {
+  document.querySelectorAll(".page").forEach((page) => {
+    page.classList.toggle("active", page.id === pageId);
+  });
 
-export function createNavigation(cases, onLoad) {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-  let currentCaseIndex = 0;
-
-  function loadCaseByIndex(index) {
-
-    if (index < 0 || index >= cases.length) {
-      return;
-    }
-
-    currentCaseIndex = index;
-
-    onLoad(cases[currentCaseIndex]);
-
-    updateNavigation();
-
-  }
-
-  function updateNavigation() {
-
-    document.getElementById("prev-case").disabled =
-      currentCaseIndex === 0;
-
-    document.getElementById("next-case").disabled =
-      currentCaseIndex === cases.length - 1;
-
-  }
-
-  function goNextCase() {
-
-    loadCaseByIndex(currentCaseIndex + 1);
-
-  }
-
-  function goPrevCase() {
-
-    loadCaseByIndex(currentCaseIndex - 1);
-
-  }
-
-  function getCurrentCase() {
-
-    return cases[currentCaseIndex];
-
-  }
-
+export function createNavigation() {
   return {
-    loadCaseByIndex,
-    goNextCase,
-    goPrevCase,
-    getCurrentCase
-  };
+    showHome() {
+      showPage("home");
+    },
 
+    showCases() {
+      showPage("cases");
+    },
+
+    showInvestigation() {
+      showPage("investigation");
+    },
+
+    showResult() {
+      showPage("result");
+    }
+  };
 }

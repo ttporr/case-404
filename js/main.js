@@ -1,133 +1,68 @@
-
 import { cases } from "./cases.js";
-
-import { Storage } from "./storage.js";
-
-import {
-  renderInvestigation
-} from "./investigation.js";
-
+import { createNavigation } from "./navigation.js";
+import { renderInvestigation } from "./investigation.js";
 import {
   renderSuspects,
   getSelectedSuspect,
   clearSuspectSelection
 } from "./suspect.js";
-
 import {
   checkAnswer,
-  showResult,
   clearResult,
-  updateScoreboard
+  updateScoreboard,
+  renderCaseCards
 } from "./scoring.js";
 
-import {
-  createNavigation
-} from "./navigation.js";
-
-
-function renderCase(currentCase) {
-
-  // Показываем информацию о деле
-  renderInvestigation(currentCase);
-
-  // Показываем подозреваемых
-  renderSuspects(currentCase);
-
-  // Очищаем старый выбор
-  clearSuspectSelection();
-
-  // Очищаем предыдущий результат
-  clearResult();
-
-  // Проверяем сохранённый результат
-  const previousResult = Storage.getScore(currentCase.id);
-
-  if (previousResult !== undefined) {
-
-    showResult(previousResult, currentCase);
-
-  }
-
-}
-
-
-// Запуск игры
 window.addEventListener("DOMContentLoaded", () => {
+  const navigation = createNavigation();
+  let currentCase = null;
 
-  console.log("CASE 404 запущен!");
+  function openCase(selectedCase) {
+    currentCase = selectedCase;
 
-  // Создаём навигацию
-  const navigation = createNavigation(cases, renderCase);
+    renderInvestigation(currentCase);
+    renderSuspects(currentCase);
+    clearResult();
 
-
-  // Кнопка проверки ответа
-  document
-    .getElementById("check-answer")
-    .addEventListener("click", () => {
-
-      const currentCase = navigation.getCurrentCase();
-
-      const answer = getSelectedSuspect();
-
-      checkAnswer(currentCase, answer);
-
-    });
-
-
-  // Следующее дело
-  document
-    .getElementById("next-case")
-    .addEventListener("click", () => {
-
-      navigation.goNextCase();
-
-    });
-
-
-  // Предыдущее дело
-  document
-    .getElementById("prev-case")
-    .addEventListener("click", () => {
-
-      navigation.goPrevCase();
-
-    });
-
-
-  // Кнопка сброса результатов
-  const resetButton = document.getElementById("reset-score");
-
-  if (resetButton) {
-
-    resetButton.addEventListener("click", () => {
-
-      const confirmReset = confirm(
-        "Ви впевнені, що хочете скинути весь прогрес?"
-      );
-
-      if (confirmReset) {
-
-        Storage.clearScores();
-
-        clearResult();
-
-        clearSuspectSelection();
-
-        updateScoreboard();
-
-        alert("Прогрес успішно скинуто!");
-
-      }
-
-    });
-
+    navigation.showInvestigation();
   }
 
+  renderCaseCards(openCase);
 
-  // Загружаем первое дело
-  navigation.loadCaseByIndex(0);
+  document.getElementById("startButton").addEventListener("click", () => {
+    navigation.showCases();
+  });
 
-  // Обновляем очки
+  document.getElementById("homeButton").addEventListener("click", () => {
+    navigation.showHome();
+  });
+
+  document.getElementById("restartButton").addEventListener("click", () => {
+    navigation.showHome();
+  });
+
+  document.getElementById("nextCaseButton").addEventListener("click", () => {
+    navigation.showCases();
+  });
+
+  document.getElementById("backToCasesButton").addEventListener("click", () => {
+    currentCase = null;
+    clearSuspectSelection();
+    navigation.showCases();
+  });
+
+  document.getElementById("submitButton").addEventListener("click", () => {
+    if (!currentCase) return;
+
+    const answer = getSelectedSuspect();
+    const result = checkAnswer(currentCase, answer);
+
+    if (result !== undefined) {
+      navigation.showResult();
+    }
+  });
+
   updateScoreboard();
 
+  console.log(`CASE 404 запущено. Кількість справ: ${cases.length}`);
 });

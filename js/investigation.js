@@ -1,27 +1,27 @@
-
 export function renderInvestigation(currentCase) {
+  document.getElementById("caseTitle").textContent =
+    currentCase.title;
 
-  const title = document.getElementById("case-title");
+  document.getElementById("caseStory").textContent =
+    currentCase.description;
 
-  const description = document.getElementById("case-description");
+  const evidenceList = document.getElementById("evidenceList");
 
-  const evidenceList = document.getElementById("case-evidences");
-
-  title.textContent =
-    `СПРАВА №${currentCase.id} - ${currentCase.title}`;
-
-  description.textContent = currentCase.description;
-
-  evidenceList.innerHTML = "";
+  evidenceList.replaceChildren();
 
   currentCase.evidences.forEach((evidence, index) => {
+    const item = document.createElement("div");
+    item.className = "evidence-item";
 
-    const li = document.createElement("li");
+    const number = document.createElement("strong");
+    number.textContent =
+      `ДОКАЗ ${String(index + 1).padStart(2, "0")}`;
 
-    li.textContent = `${index + 1}. ${evidence}`;
+    const text = document.createElement("p");
+    text.textContent = evidence;
 
-    evidenceList.appendChild(li);
+    item.append(number, text);
 
+    evidenceList.appendChild(item);
   });
-
 }

@@ -1,58 +1,61 @@
+let selectedSuspect = null;
 
 export function renderSuspects(currentCase) {
+  const suspectsList = document.getElementById("suspectList");
 
-  const suspectsList = document.getElementById("suspects");
+  suspectsList.replaceChildren();
 
-  suspectsList.innerHTML = "";
+  selectedSuspect = null;
 
-  currentCase.suspects.forEach(suspect => {
+  currentCase.suspects.forEach((suspect, index) => {
+    const card = document.createElement("button");
 
-    const li = document.createElement("li");
+    card.type = "button";
+    card.className = "suspect-card";
+    card.setAttribute("aria-pressed", "false");
 
-    const label = document.createElement("label");
+    const image = document.createElement("img");
 
-    const input = document.createElement("input");
+    image.src = suspect.image;
+    image.alt = `Портрет підозрюваного: ${suspect.name}`;
 
-    input.type = "radio";
+    const name = document.createElement("h4");
+    name.textContent = suspect.name;
 
-    input.name = "suspect";
+    const description = document.createElement("p");
+    description.textContent = suspect.description;
 
-    input.value = suspect.name;
+    const number = document.createElement("span");
 
-    label.appendChild(input);
+    number.className = "suspect-number";
+    number.textContent = `ПІДОЗРЮВАНИЙ №${index + 1}`;
 
-    label.appendChild(
-      document.createTextNode(
-        ` ${suspect.name} — ${suspect.description}`
-      )
-    );
+    card.append(number, image, name, description);
 
-    li.appendChild(label);
+    card.addEventListener("click", () => {
+      selectedSuspect = suspect.name;
 
-    suspectsList.appendChild(li);
+      suspectsList.querySelectorAll(".suspect-card").forEach((item) => {
+        const isSelected = item === card;
 
+        item.classList.toggle("selected", isSelected);
+        item.setAttribute("aria-pressed", String(isSelected));
+      });
+    });
+
+    suspectsList.appendChild(card);
   });
-
 }
 
 export function getSelectedSuspect() {
-
-  const selected = document.querySelector(
-    'input[name="suspect"]:checked'
-  );
-
-  return selected ? selected.value : null;
-
+  return selectedSuspect;
 }
 
 export function clearSuspectSelection() {
+  selectedSuspect = null;
 
-  const selected = document.querySelector(
-    'input[name="suspect"]:checked'
-  );
-
-  if (selected) {
-    selected.checked = false;
-  }
-
+  document.querySelectorAll(".suspect-card").forEach((card) => {
+    card.classList.remove("selected");
+    card.setAttribute("aria-pressed", "false");
+  });
 }
