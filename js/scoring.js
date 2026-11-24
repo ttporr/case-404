@@ -94,3 +94,9 @@ export function renderCaseCards(onSelect) {
     caseList.appendChild(card);
   });
 }
+export function resetProgress() {
+    Storage.clearScores();
+    updateScoreboard();
+
+    alert("Прогрес успішно скинуто!");
+}

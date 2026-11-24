@@ -748,3 +748,170 @@ body {
     }
 
 }
+
+@media (max-width: 600px) {
+    .footer-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footer-btn {
+        width: 100%;
+        max-width: 220px;
+    }
+}
+/* ІНТЕРАКТИВНІ БЛОКИ НА ГОЛОВНІЙ */
+
+.decoration-item {
+    width: 100%;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.decoration-item:hover {
+    border-color: var(--red);
+    transform: translateY(-4px);
+}
+
+.decoration-item:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 3px;
+}
+
+
+/* МОДАЛЬНЕ ВІКНО */
+
+.feature-modal[hidden] {
+    display: none;
+}
+
+.feature-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.feature-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+}
+
+.feature-modal-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 620px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 35px;
+    background: #111114;
+    border: 1px solid #d92735;
+    box-shadow: 0 0 40px #000;
+}
+
+.feature-modal-card h2 {
+    margin-bottom: 22px;
+    font-size: 27px;
+}
+
+.feature-modal-paragraph {
+    margin-bottom: 15px;
+    color: #b8b8c0;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.feature-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.feature-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+
+/* СЕКРЕТНІ ДОКАЗИ */
+
+.secret-case-buttons {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.secret-case-button {
+    padding: 15px;
+    background: #19191e;
+    color: white;
+    border: 1px solid #29292f;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.secret-case-button:hover,
+.secret-case-button.selected {
+    border-color: #d92735;
+    background: #281417;
+}
+
+.secret-clue {
+    padding: 18px;
+    margin: 15px 0;
+    background: #19191e;
+    border-left: 3px solid #d92735;
+    color: #eeeeef;
+    line-height: 1.7;
+}
+
+.secret-open-case {
+    width: 100%;
+}
+
+
+/* КАРТКИ ПІДОЗРЮВАНИХ */
+
+button.suspect-card {
+    width: 100%;
+    color: var(--text);
+    font-family: inherit;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .feature-modal-card {
+        padding: 30px 20px;
+    }
+
+    .feature-modal-card h2 {
+        font-size: 22px;
+    }
+
+    .feature-modal-actions {
+        flex-direction: column;
+    }
+
+    .feature-modal-actions .btn {
+        width: 100%;
+    }
+}

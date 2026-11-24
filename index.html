@@ -77,17 +77,26 @@
 
             <div class="home-decoration">
 
-                <div class="decoration-item">
+                <div class="decoration-item"
+                    data-feature="fingerprints"
+                    role="button"
+                    tabindex="0">
                     <img src="assets/images/fingerprint_closeup.png" alt="">
                     <span>АНАЛІЗ ВІДБИТКІВ</span>
                 </div>
 
-                <div class="decoration-item">
+                <div class="decoration-item"
+                    data-feature="secret"
+                    role="button"
+                    tabindex="0">
                     <img src="assets/images/evidence_folder.png" alt="">
                     <span>СЕКРЕТНІ ДОКАЗИ</span>
                 </div>
 
-                <div class="decoration-item">
+                <div class="decoration-item"
+                    data-feature="investigation"
+                    role="button"
+                    tabindex="0">
                     <img src="assets/images/magnifying_glass.png" alt="">
                     <span>РОЗСЛІДУВАННЯ</span>
                 </div>
@@ -284,6 +293,54 @@
             </div>
 
         </section>
+
+        <!-- МОДАЛЬНЕ ВІКНО -->
+        <div class="feature-modal" id="featureModal" hidden>
+
+            <div class="feature-modal-backdrop"></div>
+
+            <div class="feature-modal-card">
+
+                <button
+                    type="button"
+                    class="feature-modal-close"
+                    id="closeFeatureModal"
+                >×</button>
+
+                <p class="subtitle" id="featureModalLabel">
+                    СЕКРЕТНІ МАТЕРІАЛИ
+                </p>
+
+                <h2 id="featureModalTitle">
+                    Інформація
+                </h2>
+
+                <div id="featureModalContent"></div>
+
+                <div class="feature-modal-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="featureModalAction"
+                        hidden
+                    >
+                        Перейти
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="closeFeatureModalBottom"
+                    >
+                        Закрити
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </main>
 
